@@ -1,10 +1,12 @@
 import pandas as pd
+import os
 
-#AWS_BUCKET_PATH = "/home/aix/code/FedericoGriggio/TaxiFareModel/raw_data/"
+current_file = os.path.dirname(os.path.abspath(__file__))
+FILE_PATH = os.path.join(current_file, '..', 'raw_data', 'train.csv')
 
 def get_data(nrows=10_000):
     '''returns a DataFrame with nrows from s3 bucket'''
-    df = pd.read_csv("../raw_data/train_10k.csv", nrows=nrows)
+    df = pd.read_csv(FILE_PATH, nrows=nrows)
     return df
 
 def clean_data(df, test=False):
